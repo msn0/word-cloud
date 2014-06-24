@@ -9,6 +9,7 @@ module.exports = function (config) {
       'lib/jquery/jquery.js',
       'lib/jasmine-jquery/lib/jasmine-jquery.js',
       'src/intersector.js',
+      'src/positioner.js',
       'spec/**/*-spec.js',
       {
         pattern: 'spec/**/*.html',
@@ -35,7 +36,8 @@ module.exports = function (config) {
     singleRun: true,
 
     preprocessors: {
-      'src/intersector.js': 'coverage'
+      'src/intersector.js': 'coverage',
+      'src/positioner.js': 'coverage'
     },
 
     coverageReporter: {

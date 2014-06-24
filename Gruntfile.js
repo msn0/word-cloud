@@ -17,6 +17,7 @@ module.exports = function (grunt) {
         files: {
           '<%= BUILD_FILE %>': [
             'src/intersector.js',
+            'src/positioner.js',
             'src/main.js'
           ]
         }
