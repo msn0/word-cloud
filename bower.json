@@ -1,0 +1,18 @@
+{
+  "name": "word cloud",
+  "private": true,
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "word cloud",
+  "authors": [
+    "Michał Jezierski <ambinanitelo@gmail.pl>"
+  ],
+  "keywords": [
+    "word", "cloud"
+  ],
+  "dependencies": {
+    "jasmine-jquery": "1.3.1",
+    "jquery": "~1.10",
+    "underscore": "~1.6.0"
+  }
+}
