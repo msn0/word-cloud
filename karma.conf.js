@@ -9,7 +9,9 @@ module.exports = function (config) {
       'lib/jquery/jquery.js',
       'lib/jasmine-jquery/lib/jasmine-jquery.js',
       'src/intersector.js',
+      'src/font.js',
       'src/positioner.js',
+      'src/word-cloud.js',
       'spec/**/*-spec.js',
       {
         pattern: 'spec/**/*.html',
@@ -37,7 +39,9 @@ module.exports = function (config) {
 
     preprocessors: {
       'src/intersector.js': 'coverage',
-      'src/positioner.js': 'coverage'
+      'src/positioner.js': 'coverage',
+      'src/font.js': 'coverage',
+      'src/word-cloud.js': 'coverage'
     },
 
     coverageReporter: {

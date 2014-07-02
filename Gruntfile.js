@@ -18,6 +18,8 @@ module.exports = function (grunt) {
           '<%= BUILD_FILE %>': [
             'src/intersector.js',
             'src/positioner.js',
+            'src/font.js',
+            'src/word-cloud.js',
             'src/main.js'
           ]
         }
