@@ -5,8 +5,8 @@ describe("positioner", function () {
   beforeEach(function () {
     loadFixtures("canvas.html");
     this.canvas = document.getElementById("canvas1");
-
-    this.positioner = new Positioner(this.canvas);
+    this.cloud = new WordCloud(this.canvas);
+    this.positioner = new Positioner(this.cloud);
   });
 
   afterEach(function () {
@@ -31,6 +31,16 @@ describe("positioner", function () {
     expect(this.positioner.getNextPosition().y <= this.canvas.height).toBeTruthy();
   });
 
+  it("fitsCanvas returns true when word's width doesn't reach right boundary", function () {
+    expect(this.positioner.fitsCanvas("a", { x: 0, y: 0 })).toBeTruthy()
+  });
 
+  it("fitsCanvas returns false when word's width reaches right boundary", function () {
+    expect(this.positioner.fitsCanvas("long sentence", { x: 0, y: 0 })).toBeFalsy()
+  });
+
+//  it("fitsCanvas returns false when word's height reaches top boundary", function () {
+//    expect(this.positioner.fitsCanvas("long sentence", { x: 0, y: 0 })).toBeFalsy()
+//  });
 
 });

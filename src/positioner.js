@@ -1,6 +1,6 @@
 /* exported Positioner */
 
-var Positioner = function (canvas) {
+var Positioner = function (cloud) {
 
   return {
 
@@ -12,9 +12,17 @@ var Positioner = function (canvas) {
      */
     getNextPosition: function () {
       return {
-        x: Math.floor(Math.random() * canvas.width),
-        y: Math.floor(Math.random() * canvas.height)
+        x: Math.floor(Math.random() * cloud.getWidth()),
+        y: Math.floor(Math.random() * cloud.getHeight())
       };
+    },
+
+    fitsCanvas: function (word, position) {
+      var width = cloud.getContext().measureText(word).width;
+      if (cloud.getWidth() <= width + position.x) {
+        return false;
+      }
+      return true;
     }
   };
 
