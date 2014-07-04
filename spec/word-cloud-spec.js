@@ -1,6 +1,11 @@
 describe("word-cloud", function () {
 
   beforeEach(function () {
+    this.addMatchers({
+      toBeSameAs: function (font) {
+        return font.getSize() === this.actual.getSize();
+      }
+    });
     this.context = jasmine.createSpy("context");
     this.canvas = {
       getContext: jasmine

@@ -1,18 +1,14 @@
-/* exported Font */
+/* exported FontManager */
 
-var Font = function (canvas) {
+var FontManager = function (cloud) {
 
   var PATTERN = /([0-9]+)(px|pt|em|rem)\s+([a-z\s0-9]+)/i;
   var DEFAULT = [16, "px", "Arial"];
   var HEIGHT_FACTOR = 1.5;
   var WIDE_CHAR = "W";
 
-  var getContext = function () {
-    return canvas.getContext("2d");
-  };
-
   var getFontObject = function () {
-    var match = getContext().font.match(PATTERN);
+    var match = cloud.getContext().font.match(PATTERN);
     return match && match.length ? match.splice(1) : DEFAULT;
   };
 
@@ -47,7 +43,7 @@ var Font = function (canvas) {
      * @returns {number}
      */
     getHeight: function () {
-      return HEIGHT_FACTOR * getContext().measureText(WIDE_CHAR).width;
+      return HEIGHT_FACTOR * cloud.measureText(WIDE_CHAR).width;
     }
   };
 };

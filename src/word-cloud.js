@@ -1,9 +1,7 @@
 /* exported WordCloud */
-/* globals Font */
+/* globals FontManager */
 
 var WordCloud = function (canvas) {
-
-  var font = new Font(canvas);
 
   return {
 
@@ -13,14 +11,6 @@ var WordCloud = function (canvas) {
      */
     getContext: function () {
       return canvas.getContext("2d");
-    },
-
-    /**
-     * Returns font object
-     * @returns {Font|*}
-     */
-    getFont: function () {
-      return font;
     },
 
     /**
@@ -37,6 +27,15 @@ var WordCloud = function (canvas) {
      */
     getHeight: function () {
       return canvas.height;
+    },
+
+    /**
+     * Measure text width
+     * @param text
+     * @returns {*}
+     */
+    measureText: function (text) {
+      return this.getContext().measureText(text);
     }
   };
 

@@ -1,6 +1,6 @@
 /* exported Positioner */
 
-var Positioner = function (cloud) {
+var Positioner = function (cloud, fontManager) {
 
   return {
 
@@ -18,8 +18,11 @@ var Positioner = function (cloud) {
     },
 
     fitsCanvas: function (word, position) {
-      var width = cloud.getContext().measureText(word).width;
+      var width = cloud.measureText(word).width;
       if (cloud.getWidth() <= width + position.x) {
+        return false;
+      }
+      if (position.y <= fontManager.getHeight()) {
         return false;
       }
       return true;

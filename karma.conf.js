@@ -8,8 +8,9 @@ module.exports = function (config) {
     files: [
       'lib/jquery/jquery.js',
       'lib/jasmine-jquery/lib/jasmine-jquery.js',
+      'lib/underscore/underscore.js',
       'src/intersector.js',
-      'src/font.js',
+      'src/font-manager.js',
       'src/positioner.js',
       'src/word-cloud.js',
       'spec/**/*-spec.js',
@@ -40,7 +41,7 @@ module.exports = function (config) {
     preprocessors: {
       'src/intersector.js': 'coverage',
       'src/positioner.js': 'coverage',
-      'src/font.js': 'coverage',
+      'src/font-manager.js': 'coverage',
       'src/word-cloud.js': 'coverage'
     },
 

@@ -1,4 +1,4 @@
-describe("font", function () {
+describe("font-manager", function () {
 
   beforeEach(function () {
     this.canvas = {
@@ -13,19 +13,20 @@ describe("font", function () {
             })
         })
     };
-    this.font = new Font(this.canvas);
+    this.cloud = new WordCloud(this.canvas);
+    this.manager = new FontManager(this.cloud);
   });
 
   it("getSize should return size", function () {
-    expect(this.font.getSize()).toEqual(30);
+    expect(this.manager.getSize()).toEqual(30);
   });
 
   it("getUnit should return unit", function () {
-    expect(this.font.getUnit()).toEqual("px");
+    expect(this.manager.getUnit()).toEqual("px");
   });
 
   it("getFamily should return font family", function () {
-    expect(this.font.getFamily()).toEqual("Arial");
+    expect(this.manager.getFamily()).toEqual("Arial");
   });
 
   it("default values should be returned for invalid font", function () {
@@ -34,15 +35,15 @@ describe("font", function () {
         .createSpy("getContext")
         .andReturn({ font: "30px" })
     };
-    var font = new Font(canvas);
+    var manager = new FontManager(canvas);
 
-    expect(font.getSize()).toEqual(16);
-    expect(font.getUnit()).toEqual("px");
-    expect(font.getFamily()).toEqual("Arial");
+    expect(manager.getSize()).toEqual(16);
+    expect(manager.getUnit()).toEqual("px");
+    expect(manager.getFamily()).toEqual("Arial");
   });
 
   it("getHeight should return estimated height", function () {
-    expect(this.font.getHeight()).toEqual(36);
+    expect(this.manager.getHeight()).toEqual(36);
   });
 
 });

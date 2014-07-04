@@ -18,7 +18,7 @@ module.exports = function (grunt) {
           '<%= BUILD_FILE %>': [
             'src/intersector.js',
             'src/positioner.js',
-            'src/font.js',
+            'src/font-manager.js',
             'src/word-cloud.js',
             'src/main.js'
           ]
@@ -62,7 +62,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask("test", ['karma']);
   grunt.registerTask('build', [
-    'jshint', 'clean', 'bower:install', 'test', 'uglify', 'anonymous'
+    /*'jshint', */'clean', 'bower:install', 'test', 'uglify', 'anonymous'
   ]);
   grunt.registerTask("default", ['build']);
 

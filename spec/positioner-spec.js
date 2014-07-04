@@ -6,7 +6,8 @@ describe("positioner", function () {
     loadFixtures("canvas.html");
     this.canvas = document.getElementById("canvas1");
     this.cloud = new WordCloud(this.canvas);
-    this.positioner = new Positioner(this.cloud);
+    this.fontManager = new FontManager(this.cloud);
+    this.positioner = new Positioner(this.cloud, this.fontManager);
   });
 
   afterEach(function () {
@@ -31,16 +32,16 @@ describe("positioner", function () {
     expect(this.positioner.getNextPosition().y <= this.canvas.height).toBeTruthy();
   });
 
-  it("fitsCanvas returns true when word's width doesn't reach right boundary", function () {
-    expect(this.positioner.fitsCanvas("a", { x: 0, y: 0 })).toBeTruthy()
-  });
-
   it("fitsCanvas returns false when word's width reaches right boundary", function () {
-    expect(this.positioner.fitsCanvas("long sentence", { x: 0, y: 0 })).toBeFalsy()
+    expect(this.positioner.fitsCanvas("Lorem ipsum dolor sit amet", { x: 0, y: 50 })).toBeFalsy()
   });
 
-//  it("fitsCanvas returns false when word's height reaches top boundary", function () {
-//    expect(this.positioner.fitsCanvas("long sentence", { x: 0, y: 0 })).toBeFalsy()
-//  });
+  it("fitsCanvas returns false when part of a word is above cloud", function () {
+    expect(this.positioner.fitsCanvas("a", { x: 0, y: 10 })).toBeFalsy()
+  });
+
+  it("fitsCanvas returns true when whole word is inside cloud", function () {
+    expect(this.positioner.fitsCanvas(".", { x: 50, y: 50 })).toBeTruthy()
+  });
 
 });
